@@ -128,7 +128,7 @@ PRINTAPERSONAGEM:
         lw s1, 4(a0)                         #Guarda em s1 a altura da imagem
         mv s2, a0                            #Copia o endereço da imagem para s2
         addi s2, s2, 8                       #Primeiro pixels depois das informações de número de linhas e colunas
-	      li s3, 0xFF000000                    #Carrega em s3 o endereço do bitmap display
+	li s3, 0xFF000000                    #Carrega em s3 o endereço do bitmap display
         li t1, 320                           #t1 é o tamanho de uma linha no bitmap display
       	mul t1, t1, a2                       #Multiplica t1 pela posição Y desejada no bitmap display.
       	add t1, t1, a1                       #Soma a posição X para chegar na coluna certa
@@ -146,24 +146,24 @@ PRINTAPERSONAGEM:
 
 LINESPERSONAGEM:
         bge t1, s1, FORAPERSONAGEM           #Se terminamos a última linha da imagem, encerrar
-	      li t0, 0                             #t0 = X (coluna) atual
+	li t0, 0                             #t0 = X (coluna) atual
 
 
 COLUNPERSO:
-	      bge t0, s0, COLPERSEND               #Se terminamos a linha atual, ir pra próxima
-	      lb t2, 0(s2)                         #Pega o pixel da imagem
-	      sb t2, 0(s3)                         #Põe o pixel no display
-	      addi s2, s2, 1                       #Incrementa o endereço da imagem
-	      addi s3, s3, 1                       #Incrementa o endereço do bitmap display
-	      addi t0, t0, 1                       #Contador de colunas
-	      j COLUNPERSO                         #Volta para COLUNPERSO
+	bge t0, s0, COLPERSEND               #Se terminamos a linha atual, ir pra próxima
+	lb t2, 0(s2)                         #Pega o pixel da imagem
+	sb t2, 0(s3)                         #Põe o pixel no display
+	addi s2, s2, 1                       #Incrementa o endereço da imagem
+	addi s3, s3, 1                       #Incrementa o endereço do bitmap display
+	addi t0, t0, 1                       #Contador de colunas
+	j COLUNPERSO                         #Volta para COLUNPERSO
 
 
 COLPERSEND:
       	addi s3, s3, 320                     #Próxima linha no bitmap display
       	sub s3, s3, s0                       #Reposiciona o endereço de coluna no bitmap display
         addi t1, t1, 1                       #Incrementa o contador de altura
-	      j LINESPERSONAGEM                    #Volta para LINESPERSONAGEM
+	j LINESPERSONAGEM                    #Volta para LINESPERSONAGEM
 
 
 FORAPERSONAGEM:
@@ -213,7 +213,7 @@ PRINTAPERSONAGEM2:
         lw s1, 4(a0)                         #Guarda em s1 a altura da imagem
         mv s2, a0                            #Copia o endereço da imagem para s2
         addi s2, s2, 8                       #Primeiro pixels depois das informações de número de linhas e colunas
-	      li s3, 0xFF000000                    #Carrega em s3 o endereço do bitmap display
+	li s3, 0xFF000000                    #Carrega em s3 o endereço do bitmap display
         li t1, 320                           #t1 é o tamanho de uma linha no bitmap display
       	mul t1, t1, a2                       #Multiplica t1 pela posição Y desejada no bitmap display.
       	add t1, t1, a1                       #Soma a posição X para chegar na coluna certa
@@ -231,7 +231,7 @@ PRINTAPERSONAGEM2:
 
 LINESPERSONAGEM2:
         bge t1, s1, FORAPERSONAGEM2          #Se terminamos a última linha da imagem, encerrar
-	      li t0, 0                             #t0 = X (coluna) atual
+	li t0, 0                             #t0 = X (coluna) atual
 
 
 COLUNPERSO2:
